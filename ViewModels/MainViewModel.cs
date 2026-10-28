@@ -13,10 +13,12 @@ public partial class MainViewModel : ViewModelBase
 {
     private readonly ICourseService _courseService = new RestDbCourseService();
     private readonly IStudentService _studentService = new RestDbStudentService();
+    private readonly ITeacherService _teacherService = new RestDbTeacherService();
     [ObservableProperty]
     public partial string Greeting {get; set;} ="Welcome to Avalonia";
     public ObservableCollection<Course> Courses { get; } = new();
     public ObservableCollection<Student> Students { get; } = new();
+    public ObservableCollection<Teacher> Teachers { get; } = new ();
     [RelayCommand]
     private async Task LoadCoursesAsync()
     {
@@ -37,4 +39,15 @@ public partial class MainViewModel : ViewModelBase
             Students.Add(student);
         }
     }
+[RelayCommand]
+private async Task LoadTeachersAsync()
+    {
+      Teachers.Clear();
+      var teachers = await _teacherService.GetTeachersAsync();
+      foreach (var teacher in teachers)
+        {
+            Teachers.Add(teacher);
+        }
+    }
+
 }
