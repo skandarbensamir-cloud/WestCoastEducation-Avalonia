@@ -1,4 +1,4 @@
-﻿namespace WestCoastEducation.Models;
+﻿namespace WestCoastEducationAvalonia.Models;
 
 public class Address
 {

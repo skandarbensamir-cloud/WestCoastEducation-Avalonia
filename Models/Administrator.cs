@@ -1,6 +1,6 @@
 using System;
 
-namespace WestCoastEducation.Models;
+namespace WestCoastEducationAvalonia.Models;
 
 public class Administrator: EducationManager
 {

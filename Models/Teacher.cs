@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 
 
-namespace WestCoastEducation.Models;
+namespace WestCoastEducationAvalonia.Models;
 
 public class Teacher: Person //Ärver från Person...
 {

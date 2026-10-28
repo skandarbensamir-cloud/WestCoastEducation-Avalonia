@@ -1,6 +1,6 @@
 using System;
 using System.Security.Cryptography.X509Certificates;
-namespace WestCoastEducation.Models;
+namespace WestCoastEducationAvalonia.Models;
 
 public class Person
 {

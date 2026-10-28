@@ -1,4 +1,4 @@
-﻿namespace WestCoastEducation.Enums;
+﻿namespace WestCoastEducationAvalonia.Enums;
 
 
 public enum CourseType

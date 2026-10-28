@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using WestCoastEducation.Enums;
-namespace WestCoastEducation.Models;
+using WestCoastEducationAvalonia.Enums;
+namespace WestCoastEducationAvalonia.Models;
 
 
 public class Course
