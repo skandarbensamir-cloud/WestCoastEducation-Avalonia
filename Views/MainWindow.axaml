@@ -15,25 +15,27 @@
              to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
         <vm:MainViewModel />
     </Design.DataContext>
-
-       <DockPanel Margin="20">
-        <Button DockPanel.Dock="Top"
-                Content="Load courses"
-                Command="{Binding LoadCoursesCommand}"
-                Margin="0,0,0,10" />
-
-        <ListBox ItemsSource="{Binding Courses}">
-            <ListBox.ItemTemplate>
-                <DataTemplate x:DataType="models:Course">
-                    <StackPanel Orientation="Horizontal" Spacing="10">
-                        <TextBlock Text="{Binding CourseNumber}" FontWeight="Bold" />
-                        <TextBlock Text="{Binding CourseTitle}" />
-                        <TextBlock Text="{Binding CourseType}" />
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-    </DockPanel>
-
+     
+        <TabControl Margin="10">
+        <TabItem Header="Courses">
+            <DockPanel Margin="10">
+                <Button DockPanel.Dock="Top"
+                        Content="Load courses"
+                        Command="{Binding LoadCoursesCommand}"
+                        Margin="0,0,0,10" />
+                    <ListBox ItemsSource="{Binding Courses}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate x:DataType="models:Course">
+                            <StackPanel Orientation="Horizontal" Spacing="10">
+                                <TextBlock Text="{Binding CourseNumber}" FontWeight="Bold"/>
+                                <TextBlock Text="{Binding CourseTitle}"/>
+                                <TextBlock Text="{Binding CourseType}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </DockPanel>
+        </TabItem>
+    </TabControl>
 
 </Window>
