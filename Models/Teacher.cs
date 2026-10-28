@@ -46,4 +46,6 @@ public class Teacher: Person //Ärver från Person...
         + $"\nKnowledge area:{KnowledgeArea}";
     }
 
+    public Teacher(){ }
+
 }
