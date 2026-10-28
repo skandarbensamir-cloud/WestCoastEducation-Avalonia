@@ -1,0 +1,29 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:WestCoastEducationAvalonia.ViewModels"
+             xmlns:models="using:WestCoastEducationAvalonia.Models"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="WestCoastEducationAvalonia.Views.StudentsView"
+             x:DataType="vm:MainViewModel">
+
+    <DockPanel Margin="10">
+        <Button DockPanel.Dock="Top"
+                Content="Load students"
+                Command="{Binding LoadStudentsCommand}"
+                Margin="0,0,0,10" />
+
+        <ListBox ItemsSource="{Binding Students}">
+            <ListBox.ItemTemplate>
+                <DataTemplate x:DataType="models:Student">
+                    <StackPanel Orientation="Horizontal" Spacing="10">
+                        <TextBlock Text="{Binding FirstName}" FontWeight="Bold" />
+                        <TextBlock Text="{Binding LastName}" />
+                        <TextBlock Text="{Binding PhoneNumber}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </DockPanel>
+</UserControl>
