@@ -24,7 +24,7 @@ public class RestDbCourseService: ICourseService
             BaseAddress = new Uri("https://westcoasteducation-5593.restdb.io/rest/")
         };
 
-        _httpClient.DefaultRequestHeaders.Add("x-apikey", "");
+        _httpClient.DefaultRequestHeaders.Add("x-apikey", Secrets.RestDbApiKey);
     }
 
     public async Task<List<Course>> GetCoursesAsync()

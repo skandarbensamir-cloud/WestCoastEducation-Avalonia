@@ -480,3 +480,5 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
+# API key for RestDb (Not pushed to Github)
+Services/Secrets.cs
