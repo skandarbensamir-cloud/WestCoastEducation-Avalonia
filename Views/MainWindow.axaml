@@ -22,5 +22,8 @@
         <TabItem Header="Students">
             <views:StudentsView />
         </TabItem>
+        <TabItem Header="Teachers">
+            <views:TeachersView />
+        </TabItem>
     </TabControl>
 </Window>
