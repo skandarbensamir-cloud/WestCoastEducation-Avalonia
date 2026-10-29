@@ -11,19 +11,16 @@
         Title="WestCoastEducationAvalonia"
         Background="{DynamicResource BackgroundBrush}">
 
-    <Design.DataContext>
-        <vm:MainViewModel />
-    </Design.DataContext>
-     
+   
     <TabControl Margin="10">
         <TabItem Header="Courses">
-            <views:CoursesView />
+            <views:CoursesView DataContext="{Binding Courses}"/>
         </TabItem>
         <TabItem Header="Students">
-            <views:StudentsView />
+            <views:StudentsView DataContext="{Binding Students}"/>
         </TabItem>
         <TabItem Header="Teachers">
-            <views:TeachersView />
+            <views:TeachersView DataContext="{Binding Teachers}"/>
         </TabItem>
     </TabControl>
 </Window>

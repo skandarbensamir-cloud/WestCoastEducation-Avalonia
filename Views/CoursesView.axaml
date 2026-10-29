@@ -6,7 +6,7 @@
              xmlns:models="using:WestCoastEducationAvalonia.Models"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="WestCoastEducationAvalonia.Views.CoursesView"
-             x:DataType="vm:MainViewModel">
+             x:DataType="vm:CoursesViewModel">
 
     <DockPanel Margin="10">
         <Button DockPanel.Dock="Top"
