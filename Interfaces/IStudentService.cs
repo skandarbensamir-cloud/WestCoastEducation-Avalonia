@@ -7,7 +7,8 @@ namespace WestCoastEducationAvalonia.Interfaces;
 public interface IStudentService
 {
     Task<List<Student>> GetStudentsAsync();
-}
+    Task AddStudentAsync(Student student);
+}  
 
     
 
