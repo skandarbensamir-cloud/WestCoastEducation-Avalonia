@@ -1,3 +1,5 @@
+using System;
+using WestCoastEducationAvalonia.Enums;
 using System.Collections.ObjectModel;
 using System.Reflection.Metadata;
 using System.Threading.Tasks;
@@ -6,6 +8,7 @@ using CommunityToolkit.Mvvm.Input;
 using WestCoastEducationAvalonia.Interfaces;
 using WestCoastEducationAvalonia.Models;
 using WestCoastEducationAvalonia.Services;
+using System.Security;
 
 namespace WestCoastEducationAvalonia.ViewModels;
 
@@ -19,6 +22,20 @@ public partial class MainViewModel : ViewModelBase
     public ObservableCollection<Course> Courses { get; } = new();
     public ObservableCollection<Student> Students { get; } = new();
     public ObservableCollection<Teacher> Teachers { get; } = new ();
+    [ObservableProperty]
+    public partial string NewCourseNumber {get; set;} = "";
+    [ObservableProperty]
+    public partial string NewCourseTitle {get; set;} = "";
+    [ObservableProperty]
+    public partial decimal? NewLength {get; set;} = 1;
+    [ObservableProperty]
+    public partial DateTime? NewStartDate {get; set;} = DateTime.Today;
+    [ObservableProperty]
+    public partial DateTime? NewEndDate {get; set;} = DateTime.Today;
+    [ObservableProperty]
+    public partial CourseType NewCourseType {get; set;} = CourseType.Classroom;
+    public CourseType[] CourseTypes {get;} = Enum.GetValues<CourseType>();
+
     [RelayCommand]
     private async Task LoadCoursesAsync()
     {
