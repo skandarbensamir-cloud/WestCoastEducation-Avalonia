@@ -32,6 +32,12 @@ public class RestDbCourseService: ICourseService
         var Courses = await _httpClient.GetFromJsonAsync<List<Course>>("courses", _jsonOptions);
         return Courses ?? new List<Course>();
     }
+
+    public async Task DeleteCourseAsync(string Id)
+    {
+        var response = await _httpClient.DeleteAsync($"courses/{Id}");
+        response.EnsureSuccessStatusCode();
+    }
     public async Task AddCourseAsync(Course course)
     {
         var NewCourse = new
