@@ -35,9 +35,10 @@
             <ComboBox ItemsSource="{Binding CourseTypes}" SelectedItem="{Binding NewCourseType}" />
 
             <Button Content="Add course" Command="{Binding AddCourseCommand}" Margin="0,6,0,0" />
+            <Button Content="Delete selected course" Command="{Binding DeleteCourseCommand}" Margin="0,20,0,0" />
     </StackPanel>
-
-        <ListBox ItemsSource="{Binding Courses}">
+        
+    <ListBox ItemsSource="{Binding Courses}" SelectedItem="{Binding SelectedCourse}">
             <ListBox.ItemTemplate>
                 <DataTemplate x:DataType="models:Course">
                     <StackPanel Orientation="Horizontal" Spacing="10">
