@@ -33,5 +33,20 @@ public class RestDbTeacherService: ITeacherService
         var teachers = await _httpClient.GetFromJsonAsync<List<Teacher>>("teachers", _jsonOptions);
         return teachers ?? new List<Teacher>();
     }
+
+    public async Task AddTeacherAsync(Teacher teacher)
+    {
+        var NewTeacher = new
+        {
+            firstname = teacher.FirstName,
+            lastname = teacher.LastName,
+            Personidentitynumber = teacher.PersonIdentityNumber,
+            phonenumber = teacher.PhoneNumber,
+            knowledgearea = teacher.KnowledgeArea,
+        };
+
+        var response = await _httpClient.PostAsJsonAsync("teachers", NewTeacher);
+        response.EnsureSuccessStatusCode();
+    }
     
 }
