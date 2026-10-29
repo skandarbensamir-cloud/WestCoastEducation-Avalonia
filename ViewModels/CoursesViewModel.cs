@@ -6,6 +6,8 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using WestCoastEducationAvalonia.Interfaces;
 using WestCoastEducationAvalonia.Models;
+using System.ComponentModel.DataAnnotations;
+using Microsoft.Extensions.Logging;
 
 namespace WestCoastEducationAvalonia.ViewModels;
 
@@ -36,7 +38,22 @@ public partial class CoursesViewModel : ViewModelBase
 
     [ObservableProperty]
     public partial Course? SelectedCourse {get; set;}
+    //körs automatiskt när man markerar en kurs i listan.
+    //Fyller formuläret med kursens uppgifter så att man kan ändra dom.
+    partial  void OnSelectedCourseChanged(Course? value)
+    {
+        if (value is null)
+        {
+            return;
+        }
 
+        NewCourseNumber = value.CourseNumber;
+        NewCourseTitle = value.CourseTitle;
+        NewLength = value.Length;
+        NewStartDate = value.StartDate;
+        NewEndDate = value.EndDate;
+        NewCourseType = value.CourseType;
+    }
 
      [RelayCommand]
     private async Task LoadCoursesAsync()
@@ -77,6 +94,25 @@ public partial class CoursesViewModel : ViewModelBase
         }
         
         await _courseService.DeleteCourseAsync(SelectedCourse.Id);
+        await LoadCoursesAsync();
+    }
+
+    [RelayCommand]
+    private async Task UpdatecourseAsync()
+    {
+        if (SelectedCourse?.Id is null)
+        {
+            return;
+        }
+
+        SelectedCourse.CourseNumber = NewCourseNumber;
+        SelectedCourse.CourseTitle = NewCourseTitle;
+        SelectedCourse.Length = (int)(NewLength ?? 0);
+        SelectedCourse.StartDate = NewStartDate ?? DateTime.Today;
+        SelectedCourse.EndDate = NewEndDate ?? DateTime.Today;
+        SelectedCourse.CourseType = NewCourseType;
+
+        await _courseService.UpdateCourseAsync(SelectedCourse);
         await LoadCoursesAsync();
     }
 }
