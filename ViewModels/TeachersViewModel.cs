@@ -29,6 +29,24 @@ public partial class TeachersViewModel : ViewModelBase
     public partial string NewTeacherPhoneNumber {get; set;} = "";
     [ObservableProperty]
     public partial string NewKnowledgeArea {get; set;} = "";
+    [ObservableProperty]
+    public partial Teacher? SelectedTeacher {get; set;}
+
+    //Detta körs automatiskt när man markerar en lärare i listan.
+    //Fyller formuläret med lärarens uppgifter så att man kan ändra dom.
+    partial void OnSelectedTeacherChanged(Teacher? value)
+    {
+        if (value is null)
+        {
+            return;
+        }
+
+        NewTeacherFirstName = value.FirstName ?? "";
+        NewTeacherLastName = value.LastName ?? "";
+        NewTeacherPersonIdentityNumber = value.PersonIdentityNumber ?? "";
+        NewTeacherPhoneNumber = value.PhoneNumber ?? "";
+        NewKnowledgeArea = value.KnowledgeArea;
+    }
 
     [RelayCommand]
     private async Task LoadTeachersAsync()
@@ -63,5 +81,23 @@ private async Task AddTeacherAsync()
 
         await LoadTeachersAsync();
 
+    }
+
+    [RelayCommand]
+    private async Task UpdateTeacherAsync()
+    {
+        if (SelectedTeacher?.Id is null)
+        {
+            return;
+        }
+
+        SelectedTeacher.FirstName = NewTeacherFirstName;
+        SelectedTeacher.LastName = NewTeacherLastName;
+        SelectedTeacher.PersonIdentityNumber = NewTeacherPersonIdentityNumber;
+        SelectedTeacher.PhoneNumber = NewTeacherPhoneNumber;
+        SelectedTeacher.KnowledgeArea = NewKnowledgeArea;
+
+        await _teacherService.UpdateTeacherAsync(SelectedTeacher);
+        await LoadTeachersAsync();
     }
 }
