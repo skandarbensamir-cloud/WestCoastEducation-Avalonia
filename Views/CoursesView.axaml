@@ -35,7 +35,7 @@
             <ComboBox ItemsSource="{Binding CourseTypes}" SelectedItem="{Binding NewCourseType}" />
 
             <Button Content="Add course" Command="{Binding AddCourseCommand}" Margin="0,6,0,0" />
-            <Button Content="Update sleceted course" Command="{Binding UpdateCourseCommand}"/>
+            <Button Content="Update selected course" Command="{Binding UpdateCourseCommand}"/>
             <Button Content="Delete selected course" Command="{Binding DeleteCourseCommand}" Margin="0,20,0,0" />
     </StackPanel>
         

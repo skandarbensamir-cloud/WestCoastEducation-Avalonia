@@ -33,7 +33,7 @@
             <TextBox Text="{Binding NewKnowledgeArea}"/>
 
             <Button Content="Add teacher" Command="{Binding AddTeacherCommand}" Margin="0,6,0,0"/>
-            <Button Content="Updated selected teacher" Command="{Binding UpdateTeacherCommand}"/>
+            <Button Content="Update selected teacher" Command="{Binding UpdateTeacherCommand}"/>
         </StackPanel>
 
         <ListBox ItemsSource="{Binding Teachers}" SelectedItem="{Binding SelectedTeacher}">
