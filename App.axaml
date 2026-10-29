@@ -2,14 +2,41 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="WestCoastEducationAvalonia.App"
              xmlns:local="using:WestCoastEducationAvalonia"
-             RequestedThemeVariant="Default">
-             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+             RequestedThemeVariant="Light">
+             
 
     <Application.DataTemplates>
-        <local:ViewLocator />
+        <local:ViewLocator/>
     </Application.DataTemplates>
 
+    <Application.Resources>
+        <SolidColorBrush x:Key="BackgroundBrush" Color="#FAF7F5"/>
+        <SolidColorBrush x:Key="SurfaceBrush" Color="#FFFFFF"/>
+        <SolidColorBrush x:Key="TextBrush" Color="#1E1B24"/>
+        <SolidColorBrush x:Key="PrimaryBrush" Color="#C2185B"/>
+        <SolidColorBrush x:Key="PrimaryHoverBrush" Color="#D84315"/>
+        <SolidColorBrush x:Key="AccentTextBrush" Color="#6A1B9A"/>
+        <SolidColorBrush x:Key="ButtonTextBrush" Color="#FFFFFF"/>
+        <Color x:Key="SystemAccentColor">#C2185b</Color>
+    </Application.Resources>
+
     <Application.Styles>
-        <FluentTheme />
+        <FluentTheme/>
+       
+        <Style Selector="Button">
+        <Setter Property="Background" Value="{DynamicResource PrimaryBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ButtonTextBrush}"/>
+        </Style>
+
+        <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="{DynamicResource PrimaryHoverBrush}"/>
+            <Setter Property="Foreground" Value="{DynamicResource ButtonTextBrush}"/>
+        </Style>
+            <Style Selector="ListBox">
+            <Setter Property="Background" Value="{DynamicResource SurfaceBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+        </Style>
+
     </Application.Styles>
 </Application>
