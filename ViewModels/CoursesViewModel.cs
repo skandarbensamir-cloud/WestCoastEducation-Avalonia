@@ -98,7 +98,7 @@ public partial class CoursesViewModel : ViewModelBase
     }
 
     [RelayCommand]
-    private async Task UpdatecourseAsync()
+    private async Task UpdateCourseAsync()
     {
         if (SelectedCourse?.Id is null)
         {
