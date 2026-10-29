@@ -9,6 +9,8 @@ using WestCoastEducationAvalonia.Interfaces;
 using WestCoastEducationAvalonia.Models;
 using WestCoastEducationAvalonia.Services;
 using System.Security;
+using Avalonia.Metadata;
+using System.Drawing;
 
 namespace WestCoastEducationAvalonia.ViewModels;
 
@@ -89,6 +91,17 @@ public partial class MainViewModel : ViewModelBase
         NewCourseTitle = "";
         NewLength = 1;
 
+        await LoadCoursesAsync();
+    }
+    [RelayCommand]
+    public async Task DeleteCourseAsync()
+    {
+        if (SelectedCourse?.Id is null)
+        {
+            return;
+        }
+        
+        await _courseService.DeleteCourseAsync(SelectedCourse.Id);
         await LoadCoursesAsync();
     }
     [RelayCommand]

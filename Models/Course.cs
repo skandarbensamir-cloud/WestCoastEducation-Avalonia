@@ -10,6 +10,7 @@ public class Course
 //RestDb ger varje kurs ett unikt id i fältet "_id".
 //Det behövs för att kunna radera och uppdatera rätt kurs.
 [JsonPropertyName("_id")]
+public string? Id {get; set;}
 //Properties...
 public string CourseNumber{get; set;}
 public int Length {get; set;}
