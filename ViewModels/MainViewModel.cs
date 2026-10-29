@@ -45,6 +45,18 @@ public partial class MainViewModel : ViewModelBase
     [ObservableProperty]
     public partial string NewPhoneNumber {get; set;} = "";
 
+    [ObservableProperty]
+    public partial string NewTeacherFirstName {get; set;} = "";
+    [ObservableProperty]
+    public partial string NewTeacherLastName {get; set;} = "";
+    [ObservableProperty]
+    public partial string NewTeacherPersonIdentityNumber {get; set;} = "";
+    [ObservableProperty]
+    public partial string NewTeacherPhoneNumber {get; set;} = "";
+    [ObservableProperty]
+    public partial string NewKnowledgeArea {get; set;} = "";
+
+
 
     [RelayCommand]
     private async Task LoadCoursesAsync()
@@ -117,5 +129,28 @@ private async Task LoadTeachersAsync()
             Teachers.Add(teacher);
         }
     }
+
+[RelayCommand]
+private async Task AddTeacherAsync()
+    {
+        var teacher =new Teacher
+        {
+            FirstName = NewTeacherFirstName,
+            LastName = NewTeacherLastName,
+            PersonIdentityNumber = NewTeacherPersonIdentityNumber,
+            PhoneNumber = NewTeacherPhoneNumber,
+            KnowledgeArea = NewKnowledgeArea
+        };
+
+        await _teacherService.AddTeacherAsync(teacher);
+        
+        NewTeacherFirstName = "";
+        NewTeacherLastName = "";
+        NewTeacherPersonIdentityNumber = "";
+        NewTeacherPhoneNumber = "";
+        NewKnowledgeArea = "";
+
+    }
+
 
 }
