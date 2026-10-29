@@ -32,4 +32,20 @@ public class RestDbCourseService: ICourseService
         var Courses = await _httpClient.GetFromJsonAsync<List<Course>>("courses", _jsonOptions);
         return Courses ?? new List<Course>();
     }
+    public async Task AddCourseAsync(Course course)
+    {
+        var NewCourse = new
+        {
+            coursenumber = course.CourseNumber,
+            coursetitle = course.CourseTitle,
+            length = course.Length,
+            startdate = course.StartDate,
+            enddate = course.EndDate,
+            coursetype = (int)course.CourseType
+
+        };
+        
+        var response = await _httpClient.PostAsJsonAsync("courses", NewCourse);
+        response.EnsureSuccessStatusCode();
+    }
 }
