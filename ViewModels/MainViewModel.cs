@@ -37,6 +37,9 @@ public partial class MainViewModel : ViewModelBase
     public CourseType[] CourseTypes {get;} = Enum.GetValues<CourseType>();
 
     [ObservableProperty]
+    public partial Course? SelectedCourse {get; set;}
+
+    [ObservableProperty]
     public partial string NewFirstName {get; set;} = "";
     [ObservableProperty]
     public partial string NewLastName {get; set;} = "";
@@ -149,6 +152,8 @@ private async Task AddTeacherAsync()
         NewTeacherPersonIdentityNumber = "";
         NewTeacherPhoneNumber = "";
         NewKnowledgeArea = "";
+
+        await LoadTeachersAsync();
 
     }
 
