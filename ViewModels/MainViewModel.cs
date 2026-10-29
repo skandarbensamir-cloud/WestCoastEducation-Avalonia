@@ -86,6 +86,27 @@ public partial class MainViewModel : ViewModelBase
             Students.Add(student);
         }
     }
+
+[RelayCommand]
+private async Task AddStudentAsync()
+    {
+        var student = new Student
+        {
+          FirstName = NewFirstName,
+          LastName = NewLastName,
+          PersonIdentityNumber = NewPersonIdentityNumber,
+          PhoneNumber = NewPhoneNumber 
+        };
+
+        await _studentService.AddStudentAsync(student);
+        NewFirstName = "";
+        NewLastName = "";
+        NewPersonIdentityNumber = "";
+        NewPhoneNumber = "";
+
+        await LoadStudentsAsync();
+    
+    }
 [RelayCommand]
 private async Task LoadTeachersAsync()
     {
