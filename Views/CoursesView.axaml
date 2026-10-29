@@ -13,7 +13,8 @@
                 Content="Load courses"
                 Command="{Binding LoadCoursesCommand}"
                 Margin="0,0,0,10" />
-    <StackPanel DockPanel.Dock="Right" Width="280" Spacing="6" Margin="10,0,0,0">
+            <ScrollViewer DockPanel.Dock="Right">
+            <StackPanel Width="280" Spacing="6" Margin="10,0,0,0">
             <TextBlock Text="New course" FontWeight="Bold" />
 
             <TextBlock Text="Course number" />
@@ -38,6 +39,7 @@
             <Button Content="Update selected course" Command="{Binding UpdateCourseCommand}"/>
             <Button Content="Delete selected course" Command="{Binding DeleteCourseCommand}" Margin="0,20,0,0" />
     </StackPanel>
+    </ScrollViewer>
         
     <ListBox ItemsSource="{Binding Courses}" SelectedItem="{Binding SelectedCourse}">
             <ListBox.ItemTemplate>
