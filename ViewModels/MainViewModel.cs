@@ -36,7 +36,7 @@ public partial class MainViewModel : ViewModelBase
     public partial CourseType NewCourseType {get; set;} = CourseType.Classroom;
     public CourseType[] CourseTypes {get;} = Enum.GetValues<CourseType>();
 
-    [RelayCommand]
+        [RelayCommand]
     private async Task LoadCoursesAsync()
     {
         Courses.Clear();
@@ -45,6 +45,26 @@ public partial class MainViewModel : ViewModelBase
         {
             Courses.Add(course);
         }
+    }
+
+    [RelayCommand]
+    private async Task AddCourseAsync()
+    {
+        var course = new Course(
+            NewCourseTitle,
+            (int)(NewLength ?? 0),
+            NewStartDate ?? DateTime.Today,
+            NewEndDate ?? DateTime.Today,
+            NewCourseType,
+            NewCourseNumber);
+
+        await _courseService.AddCourseAsync(course);
+
+        NewCourseNumber = "";
+        NewCourseTitle = "";
+        NewLength = 1;
+
+        await LoadCoursesAsync();
     }
     [RelayCommand]
     private async Task LoadStudentsAsync()
