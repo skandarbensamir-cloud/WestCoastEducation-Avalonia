@@ -13,6 +13,29 @@
                 Content="Load courses"
                 Command="{Binding LoadCoursesCommand}"
                 Margin="0,0,0,10" />
+    <StackPanel DockPanel.Dock="Right" Width="280" Spacing="6" Margin="10,0,0,0">
+            <TextBlock Text="New course" FontWeight="Bold" />
+
+            <TextBlock Text="Course number" />
+            <TextBox Text="{Binding NewCourseNumber}" />
+
+            <TextBlock Text="Title" />
+            <TextBox Text="{Binding NewCourseTitle}" />
+
+            <TextBlock Text="Length" />
+            <NumericUpDown Value="{Binding NewLength}" Minimum="1" Increment="1" FormatString="0" />
+
+            <TextBlock Text="Start date" />
+            <CalendarDatePicker SelectedDate="{Binding NewStartDate}" />
+
+            <TextBlock Text="End date" />
+            <CalendarDatePicker SelectedDate="{Binding NewEndDate}" />
+
+            <TextBlock Text="Type" />
+            <ComboBox ItemsSource="{Binding CourseTypes}" SelectedItem="{Binding NewCourseType}" />
+
+            <Button Content="Add course" Command="{Binding AddCourseCommand}" Margin="0,6,0,0" />
+    </StackPanel>
 
         <ListBox ItemsSource="{Binding Courses}">
             <ListBox.ItemTemplate>
