@@ -12,15 +12,15 @@
         <Button DockPanel.Dock="Top"
                 Content="Load teachers"
                 Command="{Binding LoadTeachersCommand}"
-                Margin="0,0,0,10" />
+                Margin="0,0,0,10"/>
 
         <ListBox ItemsSource="{Binding Teachers}">
             <ListBox.ItemTemplate>
                 <DataTemplate x:DataType="models:Teacher">
                     <StackPanel Orientation="Horizontal" Spacing="10">
-                        <TextBlock Text="{Binding FirstName}" FontWeight="Bold" />
+                        <TextBlock Text="{Binding FirstName}" FontWeight="Bold"/>
                         <TextBlock Text="{Binding LastName}" />
-                        <TextBlock Text="{Binding KnowledgeArea}" />
+                        <TextBlock Text="{Binding KnowledgeArea}"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

@@ -12,7 +12,25 @@
         <Button DockPanel.Dock="Top"
                 Content="Load students"
                 Command="{Binding LoadStudentsCommand}"
-                Margin="0,0,0,10" />
+                Margin="0,0,0,10"/>
+
+    <StackPanel DockPanel.Dock="Right" Width="280" Spacing="6" Margin="10,0,0,0">
+            <TextBlock Text="New student" FontWeight="Bold"/>
+
+            <TextBlock Text="First name"/>
+            <TextBox Text="{Binding NewFirstName}"/>
+
+            <TextBlock Text="Last name"/>
+            <TextBox Text="{Binding NewLastName}"/>
+
+            <TextBlock Text="Personal identity number" />
+            <TextBox Text="{Binding NewPersonIdentityNumber}"/>
+
+            <TextBlock Text="Phone number"/>
+            <TextBox Text="{Binding NewPhoneNumber}"/>
+
+            <Button Content="Add student" Command="{Binding AddStudentCommand}" Margin="0,6,0,0" />
+        </StackPanel>
 
         <ListBox ItemsSource="{Binding Students}">
             <ListBox.ItemTemplate>
