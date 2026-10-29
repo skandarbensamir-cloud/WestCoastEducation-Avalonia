@@ -9,15 +9,23 @@
         <local:ViewLocator/>
     </Application.DataTemplates>
 
-    <Application.Resources>
-        <SolidColorBrush x:Key="BackgroundBrush" Color="#FAF7F5"/>
-        <SolidColorBrush x:Key="SurfaceBrush" Color="#FFFFFF"/>
-        <SolidColorBrush x:Key="TextBrush" Color="#1E1B24"/>
-        <SolidColorBrush x:Key="PrimaryBrush" Color="#C2185B"/>
-        <SolidColorBrush x:Key="PrimaryHoverBrush" Color="#D84315"/>
-        <SolidColorBrush x:Key="AccentTextBrush" Color="#6A1B9A"/>
-        <SolidColorBrush x:Key="ButtonTextBrush" Color="#FFFFFF"/>
-        <Color x:Key="SystemAccentColor">#C2185b</Color>
+       <Application.Resources>
+        <!-- Neon-solnedgång som bakgrund Inspirerad av ett TV-Spel-->
+        <LinearGradientBrush x:Key="BackgroundBrush" StartPoint="0%,0%" EndPoint="100%,100%">
+            <GradientStop Color="#1A0B2E" Offset="0" />
+            <GradientStop Color="#5B1A7A" Offset="0.5" />
+            <GradientStop Color="#C2185B" Offset="1" />
+        </LinearGradientBrush>
+
+        <SolidColorBrush x:Key="SurfaceBrush" Color="#CC140A24" />
+        <SolidColorBrush x:Key="TextBrush" Color="#FFFFFF" />
+
+        <!-- Neonfärger -->
+        <SolidColorBrush x:Key="PrimaryBrush" Color="#FF2E88" />
+        <SolidColorBrush x:Key="PrimaryHoverBrush" Color="#FF8C42" />
+        <SolidColorBrush x:Key="AccentTextBrush" Color="#00E5FF" />
+        <SolidColorBrush x:Key="ButtonTextBrush" Color="#FFFFFF" />
+        <Color x:Key="SystemAccentColor">#00E5FF</Color>
     </Application.Resources>
 
     <Application.Styles>
@@ -27,7 +35,7 @@
         <Setter Property="Background" Value="{DynamicResource PrimaryBrush}"/>
         <Setter Property="Foreground" Value="{DynamicResource ButtonTextBrush}"/>
         </Style>
-
+         
         <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
             <Setter Property="Background" Value="{DynamicResource PrimaryHoverBrush}"/>
             <Setter Property="Foreground" Value="{DynamicResource ButtonTextBrush}"/>
