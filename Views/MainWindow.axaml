@@ -8,7 +8,8 @@
         x:Class="WestCoastEducationAvalonia.Views.MainWindow"
         x:DataType="vm:MainViewModel"
         Icon="/Assets/avalonia-logo.ico"
-        Title="WestCoastEducationAvalonia">
+        Title="WestCoastEducationAvalonia"
+        Background="{DynamicResource BackgroundBrush}">
 
     <Design.DataContext>
         <vm:MainViewModel />
