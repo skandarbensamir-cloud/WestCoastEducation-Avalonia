@@ -8,6 +8,7 @@ public interface ITeacherService
 {
     Task<List<Teacher>> GetTeachersAsync();
     Task AddTeacherAsync(Teacher teacher);
+    Task UpdateTeacherAsync(Teacher teacher);
 }
 
     

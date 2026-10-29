@@ -40,7 +40,7 @@ public class RestDbTeacherService: ITeacherService
         {
             firstname = teacher.FirstName,
             lastname = teacher.LastName,
-            Personidentitynumber = teacher.PersonIdentityNumber,
+            personidentitynumber = teacher.PersonIdentityNumber,
             phonenumber = teacher.PhoneNumber,
             knowledgearea = teacher.KnowledgeArea,
         };
@@ -48,5 +48,21 @@ public class RestDbTeacherService: ITeacherService
         var response = await _httpClient.PostAsJsonAsync("teachers", NewTeacher);
         response.EnsureSuccessStatusCode();
     }
+    
+    public async Task UpdateTeacherAsync(Teacher teacher)
+    {
+        var UpdateTeacher = new
+        {
+          firstname = teacher.FirstName,
+          lastname = teacher.LastName,
+          personidentitynumber = teacher.PersonIdentityNumber,
+          phonenumber = teacher.PhoneNumber,
+          knowledgearea = teacher.KnowledgeArea  
+        };
+
+        var response = await _httpClient.PutAsJsonAsync($"teachers/{teacher.Id}", UpdateTeacher);
+        response.EnsureSuccessStatusCode();
+    }
+
     
 }
