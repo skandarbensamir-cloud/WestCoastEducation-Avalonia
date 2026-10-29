@@ -10,7 +10,7 @@
     </Application.DataTemplates>
 
        <Application.Resources>
-        <!-- Neon-solnedgång som bakgrund Inspirerad av ett TV-Spel-->
+        <!-- Neon-solnedgång som bakgrund inspirerad av ett TV-Spel-->
         <LinearGradientBrush x:Key="BackgroundBrush" StartPoint="0%,0%" EndPoint="100%,100%">
             <GradientStop Color="#1A0B2E" Offset="0" />
             <GradientStop Color="#5B1A7A" Offset="0.5" />
@@ -20,7 +20,7 @@
         <SolidColorBrush x:Key="SurfaceBrush" Color="#CC140A24" />
         <SolidColorBrush x:Key="TextBrush" Color="#FFFFFF" />
 
-        <!-- Neonfärger -->
+        <!-- Neonfärger också inspirerat av ett TV-Spel -->
         <SolidColorBrush x:Key="PrimaryBrush" Color="#FF2E88" />
         <SolidColorBrush x:Key="PrimaryHoverBrush" Color="#FF8C42" />
         <SolidColorBrush x:Key="AccentTextBrush" Color="#00E5FF" />
