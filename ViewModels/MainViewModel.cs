@@ -36,7 +36,17 @@ public partial class MainViewModel : ViewModelBase
     public partial CourseType NewCourseType {get; set;} = CourseType.Classroom;
     public CourseType[] CourseTypes {get;} = Enum.GetValues<CourseType>();
 
-        [RelayCommand]
+    [ObservableProperty]
+    public partial string NewFirstName {get; set;} = "";
+    [ObservableProperty]
+    public partial string NewLastName {get; set;} = "";
+    [ObservableProperty]
+    public partial string NewPersonIdentityNumber {get; set;} = "";
+    [ObservableProperty]
+    public partial string NewPhoneNumber {get; set;} = "";
+
+
+    [RelayCommand]
     private async Task LoadCoursesAsync()
     {
         Courses.Clear();
