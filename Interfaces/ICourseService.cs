@@ -9,6 +9,7 @@ public interface ICourseService
     Task<List<Course>> GetCoursesAsync();
     Task AddCourseAsync(Course course);
     Task DeleteCourseAsync(string id);
+    Task UpdateCourseAsync(Course course);
 }
 
     

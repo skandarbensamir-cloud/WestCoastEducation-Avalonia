@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Json;
+using System.Runtime.InteropServices;
 using System.Text.Json;
 using System.Threading.Tasks;
 using WestCoastEducationAvalonia.Interfaces;
@@ -52,6 +53,22 @@ public class RestDbCourseService: ICourseService
         };
         
         var response = await _httpClient.PostAsJsonAsync("courses", NewCourse);
+        response.EnsureSuccessStatusCode();
+    }
+
+    public async Task UpdateCourseAsync(Course course)
+    {
+        var UpdateCourse = new
+        {
+          coursenumber = course.CourseNumber,
+          coursetitle = course.CourseTitle,
+          lengt = course.Length,
+          startdate = course.StartDate,
+          enddate = course.EndDate,
+          coursetyoe = (int)course.CourseType  
+        };
+
+        var response = await _httpClient.PutAsJsonAsync($"courses/{course.Id}", UpdateCourse);
         response.EnsureSuccessStatusCode();
     }
 }
