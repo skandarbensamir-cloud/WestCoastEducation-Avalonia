@@ -5,6 +5,7 @@ using System.Net.Http.Json;
 using System.Runtime.InteropServices;
 using System.Text.Json;
 using System.Threading.Tasks;
+using WestCoastEducationAvalonia.Enums;
 using WestCoastEducationAvalonia.Interfaces;
 using WestCoastEducationAvalonia.Models;
 
@@ -62,10 +63,10 @@ public class RestDbCourseService: ICourseService
         {
           coursenumber = course.CourseNumber,
           coursetitle = course.CourseTitle,
-          lengt = course.Length,
+          length = course.Length,
           startdate = course.StartDate,
           enddate = course.EndDate,
-          coursetyoe = (int)course.CourseType  
+          coursetype = (int)course.CourseType  
         };
 
         var response = await _httpClient.PutAsJsonAsync($"courses/{course.Id}", UpdateCourse);
