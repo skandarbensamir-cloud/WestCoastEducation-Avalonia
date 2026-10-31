@@ -30,9 +30,6 @@
             <TextBlock Text="Phone number"/>
             <TextBox Text="{Binding NewTeacherPhoneNumber}"/>
 
-            <TextBlock Text="Knowledge area"/>
-            <TextBox Text="{Binding NewKnowledgeArea}"/>
-
             <Button Content="Add teacher" Command="{Binding AddTeacherCommand}" Margin="0,6,0,0"/>
             <Button Content="Update selected teacher" Command="{Binding UpdateTeacherCommand}"/>
 
@@ -70,7 +67,7 @@
                     <StackPanel Orientation="Horizontal" Spacing="10">
                         <TextBlock Text="{Binding FirstName}" FontWeight="Bold"/>
                         <TextBlock Text="{Binding LastName}"/>
-                        <TextBlock Text="{Binding KnowledgeArea}"/>
+                        <TextBlock Text="{Binding KnowledgeAreaText}"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
