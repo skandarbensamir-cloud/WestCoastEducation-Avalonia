@@ -34,6 +34,32 @@
 
             <Button Content="Add teacher" Command="{Binding AddTeacherCommand}" Margin="0,6,0,0"/>
             <Button Content="Update selected teacher" Command="{Binding UpdateTeacherCommand}"/>
+
+            <TextBlock Text="Knowledge areas" FontWeight="Bold" Margin="0,20,0,0"/>
+
+            <ListBox ItemsSource="{Binding TeacherKnowledgeAreas}"
+                     SelectedItem="{Binding SelectedTeacherKnowledgeArea}"
+                     Height="120">
+                <ListBox.ItemTemplate>
+                    <DataTemplate x:DataType="models:KnowledgeArea">
+                        <TextBlock Text="{Binding Name}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+            <Button Content="Remove selected area" Command="{Binding RemoveKnowledgeAreaCommand}"/>
+
+            <ComboBox ItemsSource="{Binding AllKnowledgeAreas}"
+                      SelectedItem="{Binding SelectedKnowledgeAreaToAdd}"
+                      HorizontalAlignment="Stretch">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate x:DataType="models:KnowledgeArea">
+                        <TextBlock Text="{Binding Name}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+            <Button Content="Add area" Command="{Binding AddKnowledgeAreaCommand}"/>
         </StackPanel>
 
         <ListBox ItemsSource="{Binding Teachers}" SelectedItem="{Binding SelectedTeacher}">
