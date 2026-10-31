@@ -4,8 +4,8 @@ namespace WestCoastEducationAvalonia.Models;
 
 public class Administrator: EducationManager
 {
-public Administrator(string firstName, string lastName, string personIdentityNumber, string phoneNumber, string postalCode, string address, string city, string knowledgeArea, DateTime dateOfEmployment)
-:base(firstName, lastName, personIdentityNumber, phoneNumber, postalCode, address, city, knowledgeArea, dateOfEmployment)
+public Administrator(string firstName, string lastName, string personIdentityNumber, string phoneNumber, string postalCode, string address, string city, DateTime dateOfEmployment)
+:base(firstName, lastName, personIdentityNumber, phoneNumber, postalCode, address, city, dateOfEmployment)
     {
         //“Administrator har inget extra, så allt skickas vidare till EducationManager via base.”
     }

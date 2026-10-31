@@ -8,7 +8,6 @@ namespace WestCoastEducationAvalonia.Models;
 
 public class Teacher: Person //Ärver från Person...
 {
-    public string KnowledgeArea {get; set;} = "";
     [JsonPropertyName("_id")]
     public string? Id {get; set;}
     public  List<KnowledgeArea> KnowledgeAreas {get; set;} = new List<KnowledgeArea>();
@@ -28,11 +27,11 @@ public class Teacher: Person //Ärver från Person...
     }
     public List<Course> Courses{get; set;} = new List<Course>();
     
-    public Teacher(string firstName, string lastName, string personIdentityNumber, string phoneNumber, string postalCode, string address, string city, string knowledgeArea)
+    public Teacher(string firstName, string lastName, string personIdentityNumber, string phoneNumber, string postalCode, string address, string city)
     
     :base(firstName, lastName, personIdentityNumber, phoneNumber, postalCode, address, city)
     {
-        KnowledgeArea = knowledgeArea;
+        
     }
 
   public void AddCourse(Course course)
@@ -62,7 +61,7 @@ public class Teacher: Person //Ärver från Person...
     public override string ToString()
     {
         return base.ToString() 
-        + $"\nKnowledge area:{KnowledgeArea}";
+        + $"\nKnowledge area:{KnowledgeAreaText}";
     }
 
     public Teacher(){ }
