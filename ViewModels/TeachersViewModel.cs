@@ -11,11 +11,12 @@ namespace WestCoastEducationAvalonia.ViewModels;
 
 public partial class TeachersViewModel : ViewModelBase
 {
-    private readonly ITeacherService _teacherService;
-
-    public TeachersViewModel(ITeacherService teacherService)
+   private readonly ITeacherService _teacherService;
+   private readonly IKnowledgeAreaService _knowledgeareaService;
+   public TeachersViewModel(ITeacherService teacherService, IKnowledgeAreaService knowledgeAreaService)
     {
         _teacherService = teacherService;
+        _knowledgeareaService = knowledgeAreaService;
     }
     public ObservableCollection<Teacher> Teachers { get; } = new ();
 
