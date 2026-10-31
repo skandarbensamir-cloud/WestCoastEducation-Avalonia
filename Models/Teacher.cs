@@ -12,6 +12,20 @@ public class Teacher: Person //Ärver från Person...
     [JsonPropertyName("_id")]
     public string? Id {get; set;}
     public  List<KnowledgeArea> KnowledgeAreas {get; set;} = new List<KnowledgeArea>();
+
+    //Vi gör om häftet till text som sk visas i listan som exemeplvis C# eller Azure
+    public string KnowledgeAreaText
+    {
+        get
+        {
+            var names = new List<string>();
+            foreach (var area in KnowledgeAreas)
+            {
+               names.Add(area.Name);
+            }
+            return string.Join(", ", names);
+        }
+    }
     public List<Course> Courses{get; set;} = new List<Course>();
     
     public Teacher(string firstName, string lastName, string personIdentityNumber, string phoneNumber, string postalCode, string address, string city, string knowledgeArea)
