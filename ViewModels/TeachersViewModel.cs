@@ -6,6 +6,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using WestCoastEducationAvalonia.Interfaces;
 using WestCoastEducationAvalonia.Models;
+using System.Diagnostics.CodeAnalysis;
 
 namespace WestCoastEducationAvalonia.ViewModels;
 
@@ -126,4 +127,39 @@ private async Task AddTeacherAsync()
         await _teacherService.UpdateTeacherAsync(SelectedTeacher);
         await LoadTeachersAsync();
     }
+
+    [RelayCommand]
+    private async Task AddKnowledgeAreaAsync()
+    {
+        if (SelectedTeacher is null || SelectedKnowledgeAreaToAdd is null)
+        {
+            return;
+        }
+        // samma område får och ska ej läggas till 2 gånger
+        foreach (var existing in SelectedTeacher.KnowledgeAreas)
+        {
+            if (existing.Name == SelectedKnowledgeAreaToAdd.Name)
+            {
+                return;
+            }
+        }
+
+        SelectedTeacher.KnowledgeAreas.Add(SelectedKnowledgeAreaToAdd);
+        TeacherKnowledgeAreas.Add(SelectedKnowledgeAreaToAdd);
+        await _teacherService.UpdateTeacherAsync(SelectedTeacher);
+    }
+
+    [RelayCommand]
+    private async Task RemoveKnowledgeAreaAsync()
+    {
+        if (SelectedTeacher is null || SelectedTeacherKnowledgeArea is null)
+        {
+            return;
+        }
+        SelectedTeacher.KnowledgeAreas.Remove(SelectedTeacherKnowledgeArea);
+        TeacherKnowledgeAreas.Remove(SelectedTeacherKnowledgeArea);
+        await _teacherService.UpdateTeacherAsync(SelectedTeacher);
+    }
+
+
 }
