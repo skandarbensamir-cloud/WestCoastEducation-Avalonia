@@ -70,6 +70,13 @@ public partial class TeachersViewModel : ViewModelBase
         {
             Teachers.Add(teacher);
         }
+
+        AllKnowledgeAreas.Clear();
+        var knowledgeAreas = await _knowledgeareaService.GetKnowledgeAreasAsync();
+        foreach (var knowledgeArea in knowledgeAreas)
+        {
+            AllKnowledgeAreas.Add(knowledgeArea);
+        }
     }
 
 [RelayCommand]
