@@ -31,7 +31,13 @@ public class RestDbTeacherService: ITeacherService
     public async Task<List<Teacher>> GetTeachersAsync()
     {
         var teachers = await _httpClient.GetFromJsonAsync<List<Teacher>>("teachers", _jsonOptions);
-        return teachers ?? new List<Teacher>();
+        teachers ??= new List<Teacher>();
+        //Lärare som kan sakna områden i REstDb får en tom lista istället för null
+        foreach (var teacher in teachers)
+        {
+            teacher.KnowledgeAreas??= new List<KnowledgeArea>();
+        }
+        return teachers;
     }
 
     public async Task AddTeacherAsync(Teacher teacher)
@@ -42,7 +48,7 @@ public class RestDbTeacherService: ITeacherService
             lastname = teacher.LastName,
             personidentitynumber = teacher.PersonIdentityNumber,
             phonenumber = teacher.PhoneNumber,
-            knowledgearea = teacher.KnowledgeArea,
+            knowledgeareas = teacher.KnowledgeAreas,
         };
 
         var response = await _httpClient.PostAsJsonAsync("teachers", NewTeacher);
@@ -57,7 +63,7 @@ public class RestDbTeacherService: ITeacherService
           lastname = teacher.LastName,
           personidentitynumber = teacher.PersonIdentityNumber,
           phonenumber = teacher.PhoneNumber,
-          knowledgearea = teacher.KnowledgeArea  
+          knowledgeareas = teacher.KnowledgeAreas  
         };
 
         var response = await _httpClient.PutAsJsonAsync($"teachers/{teacher.Id}", UpdateTeacher);
