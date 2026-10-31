@@ -30,8 +30,6 @@ public partial class TeachersViewModel : ViewModelBase
     [ObservableProperty]
     public partial string NewTeacherPhoneNumber {get; set;} = "";
     [ObservableProperty]
-    public partial string NewKnowledgeArea {get; set;} = "";
-    [ObservableProperty]
     public partial Teacher? SelectedTeacher {get; set;}
     
     //Lådan : Alltså alla kompenetsområden som finns i RestDB
@@ -60,7 +58,6 @@ public partial class TeachersViewModel : ViewModelBase
         NewTeacherLastName = value.LastName ?? "";
         NewTeacherPersonIdentityNumber = value.PersonIdentityNumber ?? "";
         NewTeacherPhoneNumber = value.PhoneNumber ?? "";
-        NewKnowledgeArea = value.KnowledgeArea;
 
         foreach (var knowledgeArea in value.KnowledgeAreas)
         {
@@ -95,7 +92,6 @@ private async Task AddTeacherAsync()
             LastName = NewTeacherLastName,
             PersonIdentityNumber = NewTeacherPersonIdentityNumber,
             PhoneNumber = NewTeacherPhoneNumber,
-            KnowledgeArea = NewKnowledgeArea
         };
 
         await _teacherService.AddTeacherAsync(teacher);
@@ -104,7 +100,6 @@ private async Task AddTeacherAsync()
         NewTeacherLastName = "";
         NewTeacherPersonIdentityNumber = "";
         NewTeacherPhoneNumber = "";
-        NewKnowledgeArea = "";
 
         await LoadTeachersAsync();
 
@@ -122,7 +117,6 @@ private async Task AddTeacherAsync()
         SelectedTeacher.LastName = NewTeacherLastName;
         SelectedTeacher.PersonIdentityNumber = NewTeacherPersonIdentityNumber;
         SelectedTeacher.PhoneNumber = NewTeacherPhoneNumber;
-        SelectedTeacher.KnowledgeArea = NewKnowledgeArea;
 
         await _teacherService.UpdateTeacherAsync(SelectedTeacher);
         await LoadTeachersAsync();
