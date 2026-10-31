@@ -25,6 +25,7 @@ public partial class App : Application
         services.AddSingleton<ICourseService, RestDbCourseService>();
         services.AddSingleton<IStudentService, RestDbStudentService>();
         services.AddSingleton<ITeacherService, RestDbTeacherService>();
+        services.AddSingleton<IKnowledgeAreaService, RestDbKnowledgeAreaService>();
 
         //Här har vi ViewModels
         services.AddTransient<CoursesViewModel>();
