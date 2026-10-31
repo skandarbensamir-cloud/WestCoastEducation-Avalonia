@@ -49,6 +49,7 @@ public partial class TeachersViewModel : ViewModelBase
     //Fyller formuläret med lärarens uppgifter så att man kan ändra dom.
     partial void OnSelectedTeacherChanged(Teacher? value)
     {
+        TeacherKnowledgeAreas.Clear();
         if (value is null)
         {
             return;
@@ -59,6 +60,11 @@ public partial class TeachersViewModel : ViewModelBase
         NewTeacherPersonIdentityNumber = value.PersonIdentityNumber ?? "";
         NewTeacherPhoneNumber = value.PhoneNumber ?? "";
         NewKnowledgeArea = value.KnowledgeArea;
+
+        foreach (var knowledgeArea in value.KnowledgeAreas)
+        {
+            TeacherKnowledgeAreas.Add(knowledgeArea);
+        }
     }
 
     [RelayCommand]
