@@ -32,6 +32,18 @@ public partial class TeachersViewModel : ViewModelBase
     public partial string NewKnowledgeArea {get; set;} = "";
     [ObservableProperty]
     public partial Teacher? SelectedTeacher {get; set;}
+    
+    //Lådan : Alltså alla kompenetsområden som finns i RestDB
+    public ObservableCollection<KnowledgeArea> AllKnowledgeAreas{get; set;} = new();
+    //Häftet : den markerade lärarens kompetensområden
+    public ObservableCollection<KnowledgeArea> TeacherKnowledgeAreas{get; set;} = new();
+    // Det område man valt och vill lägga till
+    [ObservableProperty]
+    public partial KnowledgeArea? SelectedKnowledgeAreaToAdd{get; set;}
+    //Dett är området man valt att markerat i lärarens lista ochh vill ta bort
+    [ObservableProperty]
+    public partial KnowledgeArea? SelectedTeacherKnowledgeArea{get; set;}
+
 
     //Detta körs automatiskt när man markerar en lärare i listan.
     //Fyller formuläret med lärarens uppgifter så att man kan ändra dom.
